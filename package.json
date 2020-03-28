@@ -1,0 +1,28 @@
+{
+  "name": "to-do-fullstack",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "@babel/runtime": "^7.8.3",
+    "apollo-boost": "^0.4.7",
+    "apollo-client": "^2.6.8",
+    "apollo-link-schema": "^1.2.4",
+    "apollo-server": "^2.11.0",
+    "apollo-server-express": "^2.11.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "graphql": "^14.6.0",
+    "graphql-server-express": "^1.4.1",
+    "graphql-tools": "^4.0.7",
+    "lodash": "^4.17.15",
+    "meteor-node-stubs": "^1.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "babel-plugin-inline-import": "^3.0.0"
+  }
+}
