@@ -1,33 +1,28 @@
-const { ApolloServer, gql } = require('apollo-server');
-import { makeExecutableSchema } from 'graphql-tools';
-import merge from 'lodash/merge'
+import merge from "lodash/merge";
+// llklko
+import { getUser } from "meteor/apollo";
 
-import ResolutionSchema from '../../api/resolutions/Resolutions.graphql'
-import ResolutionResolvers from '../../api/resolutions/resolvers'
+import ResolutionSchema from "../../api/resolutions/Resolutions.graphql";
+import ResolutionResolvers from "../../api/resolutions/resolvers";
+import UsersSchema from "../../api/users/User.graphql";
+import UsersResolvers from "../../api/users/resolvers";
+import GoalsSchema from "../../api/goals/Goal.graphql";
+import GoalsResolvers from "../../api/goals/resolvers";
 
-const TestSchema = `
-type Query {
-    hi: String
-    resolutions: [Resolution]
-}`
+const { ApolloServer } = require("apollo-server");
 
-const typeDefs = [ 
-    TestSchema,
-    ResolutionSchema
-];
+const typeDefs = [ResolutionSchema, UsersSchema, GoalsSchema];
 
-const testResolvers = {
-    Query: {
-        hi() {
-            return "Hello ME!";
-        }}}
+const resolvers = merge(UsersResolvers, ResolutionResolvers, GoalsResolvers);
 
-const resolvers = merge(testResolvers, ResolutionResolvers)
-
-const schema = makeExecutableSchema({typeDefs, resolvers})
-
-const server = new ApolloServer({ schema });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: async ({ req }) => ({
+    user: await getUser(req.headers.authorization),
+  }),
+});
 
 server.listen().then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`);
-  });
+  console.log(`🚀 Server ready at ${url}`);
+});
