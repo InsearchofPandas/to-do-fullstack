@@ -18,8 +18,28 @@ export default function LoginForm({ client }) {
   return (
     <div>
       <form onSubmit={login}>
-        <input type="email" onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" onChange={(e) => setPassword(e.target.value)} />
+        <div className="form">
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label className="label-name">
+            <span className="content-name">Enter Email</span>
+          </label>
+        </div>
+
+        <div className="form">
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <label className="label-name">
+            <span className="content-name">Set Password</span>
+          </label>
+        </div>
+
         <button type="submit">Login User</button>
       </form>
     </div>

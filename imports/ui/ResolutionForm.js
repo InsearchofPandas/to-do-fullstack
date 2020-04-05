@@ -15,16 +15,19 @@ const CREATE_RESOLUTION = gql`
 
 const updateCache = (cache, { data }) => {
   // Fetch the todos from the cache
-  const existingTodos = cache.readQuery({
+  const cacheData = cache.readQuery({
     query: RESOLUTIONS_QUERY,
   });
 
   // Add the new todo to the cache
-  const newTodo = data.createResolution;
+  const blanks = { completed: null, goals: [] };
+  const fills = data.createResolution;
+  const newTodo = { ...blanks, ...fills };
+  console.log(data);
   cache.writeQuery({
     query: RESOLUTIONS_QUERY,
     data: {
-      resolutions: [...existingTodos.resolutions, newTodo],
+      resolutions: [...cacheData.resolutions, newTodo],
     },
   });
 };
@@ -36,22 +39,31 @@ export default function ResolutionForm() {
   let input;
 
   return (
-    <div>
-      <input
-        type="text"
-        ref={(node) => {
-          input = node;
-        }}
-      />
-      <button
-        onClick={() => {
-          createResolution({ variables: { name: input.value } });
-          input.value = "";
-        }}
-        type="button"
-      >
-        Submit
-      </button>
+    <div style={{ margin: 100 }}>
+      <form>
+        <div className="form">
+          <input
+            type="text"
+            ref={(node) => {
+              input = node;
+            }}
+            required
+          />
+          <label className="label-name">
+            <span className="content-name">Enter Resolution</span>
+          </label>
+        </div>
+
+        <button
+          onClick={() => {
+            createResolution({ variables: { name: input.value } });
+            input.value = "";
+          }}
+          type="button"
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 }

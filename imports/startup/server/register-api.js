@@ -1,5 +1,5 @@
 import merge from "lodash/merge";
-// llklko
+// llklkoll
 import { getUser } from "meteor/apollo";
 
 import ResolutionSchema from "../../api/resolutions/Resolutions.graphql";

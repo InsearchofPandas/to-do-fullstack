@@ -6,6 +6,7 @@ import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 import GoalForm from "./GoalForm";
 import Goal from "./resolutions/Goal";
+import styles from "./style.css";
 
 function App() {
   const { client, loading, error, data } = useQuery(RESOLUTIONS_QUERY);
@@ -17,42 +18,54 @@ function App() {
         {console.log(error)}
       </p>
     );
-
+  console.log(data);
   return (
     <>
-      <h1>To Do App</h1>
-      {data.user._id ? (
-        <button
-          type="button"
-          onClick={() => {
-            Meteor.logout();
-            client.resetStore();
-          }}
-        >
-          Logout
-        </button>
-      ) : (
-        <>
-          <RegisterForm client={client} />
-          <LoginForm client={client} />
-        </>
-      )}
+      <div className="header">
+        <h1>NEW YEAR</h1>
+        <h1>NEW ME</h1>
+      </div>
+      <div className="container">
+        {data.user === null ? (
+          <>
+            <RegisterForm client={client} />
+            <LoginForm client={client} />
+          </>
+        ) : (
+          <button
+            type="button"
+            onClick={() => {
+              Meteor.logout();
+              client.resetStore();
+            }}
+          >
+            Logout
+          </button>
+        )}
 
-      <ResolutionForm />
+        <ResolutionForm />
 
-      <ul>
-        {data.resolutions.map((resolution) => (
-          <li key={resolution._id}>
-            {resolution.name}
-            <ul>
-              {resolution.goals.map((goal) => (
-                <Goal goal={goal} key={goal._id} />
-              ))}
-            </ul>
-            <GoalForm resolutionId={resolution._id} />
-          </li>
-        ))}
-      </ul>
+        <ul>
+          {data.resolutions.map((resolution) => (
+            <li key={resolution._id}>
+              <span
+                style={{
+                  textDecoration:
+                    resolution.completed === true ? "line-through" : "",
+                }}
+              >
+                {resolution.name}
+              </span>
+              <ul>
+                {resolution.goals.map((goal) => (
+                  <Goal goal={goal} key={goal._id} />
+                ))}
+              </ul>
+              <GoalForm resolutionId={resolution._id} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
@@ -62,6 +75,7 @@ const RESOLUTIONS_QUERY = gql`
     resolutions {
       _id
       name
+      completed
       goals {
         _id
         name

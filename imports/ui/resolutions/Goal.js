@@ -22,7 +22,13 @@ export default function Goal({ goal }) {
         onChange={() => toggleGoal({ variables: { _id: goal._id } })}
         checked={goal.completed}
       />
-      {goal.name}
+      <span
+        style={{
+          textDecoration: goal.completed === true ? "line-through" : "",
+        }}
+      >
+        {goal.name}
+      </span>
     </li>
   );
 }
