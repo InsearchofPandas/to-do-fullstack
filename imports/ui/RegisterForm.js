@@ -22,7 +22,8 @@ export default function RegisterForm({ client }) {
   };
 
   return (
-    <div>
+    <div className="reg-log">
+      <h2>Register</h2>
       <form onSubmit={registerUser}>
         <div className="form">
           <input
@@ -45,7 +46,9 @@ export default function RegisterForm({ client }) {
           </label>
         </div>
 
-        <button type="submit">Register User</button>
+        <button className="reg-button" type="submit">
+          Register User
+        </button>
       </form>
     </div>
   );

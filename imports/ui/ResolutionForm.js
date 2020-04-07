@@ -39,31 +39,35 @@ export default function ResolutionForm() {
   let input;
 
   return (
-    <div style={{ margin: 100 }}>
-      <form>
-        <div className="form">
-          <input
-            type="text"
-            ref={(node) => {
-              input = node;
-            }}
-            required
-          />
-          <label className="label-name">
-            <span className="content-name">Enter Resolution</span>
-          </label>
-        </div>
-
+    <div>
+      <h2>DEFINE YOUR FUTURE!</h2>
+      <div className="res-add">
+        <form>
+          <div className="form" style={{ display: "flex" }}>
+            <input
+              className="res-input"
+              type="text"
+              ref={(node) => {
+                input = node;
+              }}
+              required
+            />
+            <label className="label-name">
+              <span className="content-name">Enter Resolution</span>
+            </label>
+          </div>
+        </form>
         <button
+          className="add-btn"
           onClick={() => {
             createResolution({ variables: { name: input.value } });
             input.value = "";
           }}
           type="button"
         >
-          Submit
+          +
         </button>
-      </form>
+      </div>
     </div>
   );
 }

@@ -16,7 +16,7 @@ export default function Goal({ goal }) {
     refetchQueries: ["Resolutions"],
   });
   return (
-    <li>
+    <li className="single-goal">
       <input
         type="checkbox"
         onChange={() => toggleGoal({ variables: { _id: goal._id } })}

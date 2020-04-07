@@ -16,7 +16,8 @@ export default function LoginForm({ client }) {
   };
 
   return (
-    <div>
+    <div className="reg-log">
+      <h2>Login</h2>
       <form onSubmit={login}>
         <div className="form">
           <input
@@ -25,7 +26,7 @@ export default function LoginForm({ client }) {
             required
           />
           <label className="label-name">
-            <span className="content-name">Enter Email</span>
+            <span className="content-name">Email</span>
           </label>
         </div>
 
@@ -36,11 +37,13 @@ export default function LoginForm({ client }) {
             required
           />
           <label className="label-name">
-            <span className="content-name">Set Password</span>
+            <span className="content-name">Password</span>
           </label>
         </div>
 
-        <button type="submit">Login User</button>
+        <button className="reg-button" type="submit">
+          Login User
+        </button>
       </form>
     </div>
   );

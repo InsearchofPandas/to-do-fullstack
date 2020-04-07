@@ -7,7 +7,29 @@
 h1 {
   text-align: center;
   font-size: 72px;
+  -webkit-text-stroke-color: rgba(162, 202, 253, 0.5);
+  -webkit-text-stroke-width: 1px;
+  width: 100%;
+  background: -webkit-linear-gradient(
+    rgb(108, 119, 161),
+    rgb(61, 49, 65)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
+h2 {
+  text-align: center;
+  font-size: 36px;
+  color: rgb(193, 218, 255);
+  width: 100%;
+}
+
+p {
+  text-align: center;
+  color: rgb(189, 167, 148);
+}
+
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial,
     sans-serif;
@@ -19,13 +41,14 @@ body {
   );
   or: #373b52;
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 form {
-  width: 40vw;
+  width: 25vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,11 +56,19 @@ form {
 }
 
 .header {
-  padding-top: 75px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instructions {
+  width: 80%;
+  padding: 40px;
 }
 
 .container {
-  width: 40vw;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,7 +76,7 @@ form {
 }
 
 .form {
-  width: 60%;
+  width: 100%;
   position: relative;
   height: 50px;
   margin-top: 15px;
@@ -62,6 +93,8 @@ form input {
   border: none;
   background-color: #353a4d;
   padding-left: 20px;
+  padding-bottom: 2px;
+  outline: none;
 }
 
 .form label {
@@ -71,7 +104,7 @@ form input {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(182, 165, 209);
 }
 
 .form label::after {
@@ -86,7 +119,7 @@ form input {
     to right,
     #b294ff,
     #57e6e6,
-    #feffb8,
+    #ffb8ed,
     #57e6e6,
     #b294ff,
     #57e6e6
@@ -113,15 +146,204 @@ form input {
   left: 20px;
   transition: all 0.3s ease;
   font-size: 22px;
+  color: rgb(165, 177, 209);
 }
 
 .form input:focus + .label-name .content-name,
 .form input:valid + .label-name .content-name {
-  transform: translateY(-70%) scale(0.7);
+  transform: translateY(-75%) scale(0.65);
   left: 5px;
 }
 
 .form input:focus + .label-name::after,
 .form input:valid + .label-name::after {
   transform: translateX(0%);
+}
+
+.reg-log {
+  margin-top: 60px;
+}
+
+.reg-button {
+  color: white;
+  font-size: 18px;
+  width: 300px;
+  height: 60px;
+  background: rgb(127, 107, 173);
+  border-radius: 120px;
+  border: none;
+  margin: 25px;
+}
+
+.reg-button:hover {
+  background: rgb(157, 130, 221);
+  transform: scale(1.05);
+}
+
+.reg-body {
+  width: 40vw;
+}
+
+.reg-switch {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.reg-underline {
+  background-color: #b6a5d1;
+  width: 100%;
+  height: 3px;
+}
+
+.switch-btn {
+  height: 50px;
+  width: 100%;
+  font-size: 22px;
+  font-weight: bold;
+  color: #171822;
+  background-color: #353a4d;
+  border: none;
+  outline: none;
+}
+
+/* Resolutions Form */
+
+.res-add {
+  display: flex;
+}
+
+.add-btn {
+  width: 60px;
+  font-size: 48px;
+  font-weight: bold;
+  color: #171822;
+  color: rgb(193, 218, 255);
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.add-btn:hover {
+  transform: scale(1.05);
+  color: rgb(157, 140, 255);
+}
+
+/* Resolution layout */
+
+.resolutions-layout {
+  width: 70vw;
+  background-color: #35354d;
+}
+
+.single-res {
+  font-size: 48px;
+  color: red;
+}
+
+.single-goal {
+  font-size: 48px;
+  color: blue;
+}
+
+/*  Responsive Section */
+@media (max-width: 1200px) {
+  h1 {
+    /* color: lightgreen; */
+    font-size: 144px;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 72px;
+    color: rgb(193, 218, 255);
+    width: 100%;
+  }
+
+  p {
+    font-size: 22px;
+    text-align: center;
+    color: rgb(189, 167, 148);
+  }
+
+  form {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header {
+    padding-top: 100px;
+  }
+
+  .instructions {
+    width: 100%;
+    padding: 80px;
+  }
+
+  .form {
+    width: 100%;
+    position: relative;
+    height: 100px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+
+  form input {
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 40px;
+    padding-top: 50px;
+    border: none;
+    background-color: #353a4d;
+    padding-left: 20px;
+    padding-bottom: 4px;
+    outline: none;
+  }
+
+  .content-name {
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    transition: all 0.3s ease;
+    font-size: 44px;
+    color: rgb(165, 177, 209);
+  }
+
+  .login {
+    margin-top: 80px;
+  }
+
+  .register {
+    margin-top: 40px;
+  }
+
+  .reg-button {
+    color: white;
+    font-size: 32px;
+    width: 600px;
+    height: 120px;
+    background: rgb(127, 107, 173);
+    border-radius: 240px;
+    border: none;
+    margin: 50px;
+  }
+
+  .reg-body {
+    width: 80vw;
+  }
+
+  .switch-btn {
+    height: 100px;
+    width: 100%;
+    font-size: 44px;
+    font-weight: bold;
+    color: #171822;
+    background-color: #353a4d;
+    border: none;
+    outline: none;
+  }
 }
