@@ -6,16 +6,8 @@
 
 h1 {
   text-align: center;
-  font-size: 72px;
-  -webkit-text-stroke-color: rgba(162, 202, 253, 0.5);
-  -webkit-text-stroke-width: 1px;
-  width: 100%;
-  background: -webkit-linear-gradient(
-    rgb(108, 119, 161),
-    rgb(61, 49, 65)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 22px;
+  color: rgb(229, 242, 250);
 }
 
 h2 {
@@ -27,18 +19,12 @@ h2 {
 
 p {
   text-align: center;
-  color: rgb(189, 167, 148);
+  color: rgb(218, 183, 152);
 }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial,
-    sans-serif;
-  background-image: radial-gradient(
-    circle at 0% 0%,
-    #373b52,
-    #252736 51%,
-    #1d1e26
-  );
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
   or: #373b52;
   width: 100vw;
   height: 100vh;
@@ -47,16 +33,41 @@ body {
   align-items: center;
 }
 
-form {
-  width: 25vw;
+.container {
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+/* Header Styling */
+.header-bar {
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: linear-gradient(
+    11deg,
+    rgba(41, 17, 99, 0.05) 0%,
+    rgba(153, 56, 180, 0.05) 41%,
+    rgba(252, 176, 69, 0.05) 100%
+  );
+
+  padding-right: 120px;
+  border: 2px solid rgba(34, 33, 51, 0.4);
+
+  position: relative;
+}
+
+.abs-center {
+  padding-top: 10px;
+  position: absolute;
+  width: 100vw;
+}
+
 .header {
-  padding-top: 50px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,11 +75,25 @@ form {
 
 .instructions {
   width: 80%;
-  padding: 40px;
 }
 
-.container {
-  width: 100vw;
+.log-btn {
+  color: white;
+  font-size: 18px;
+  width: 150px;
+  height: 40px;
+  background: none;
+  border-radius: 5px;
+  border: none;
+}
+
+.log-btn:hover {
+  background: #36333d;
+}
+/* Form Styling  */
+
+form {
+  width: 25vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -115,15 +140,7 @@ form input {
   height: 3px;
   width: 100%;
 
-  background: linear-gradient(
-    to right,
-    #b294ff,
-    #57e6e6,
-    #ffb8ed,
-    #57e6e6,
-    #b294ff,
-    #57e6e6
-  );
+  background: linear-gradient(to right, #b294ff, #57e6e6, #ffb8ed, #57e6e6, #b294ff, #57e6e6);
   background-size: 500% auto;
   animation: gradient linear 3s infinite;
   transform: translateX(-100%);
@@ -233,6 +250,7 @@ form input {
 .resolutions-layout {
   width: 70vw;
   background-color: #35354d;
+  border-radius: 10px;
 }
 
 .single-res {
@@ -274,12 +292,12 @@ form input {
   }
 
   .header {
-    padding-top: 100px;
+    padding-top: 50px;
   }
 
   .instructions {
     width: 100%;
-    padding: 80px;
+    padding: 60px;
   }
 
   .form {

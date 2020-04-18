@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Accounts } from "meteor/accounts-base";
+import React, { useState } from 'react';
+import { Accounts } from 'meteor/accounts-base';
 
 export default function LoginForm({ client }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const login = (e) => {
     e.preventDefault();
@@ -16,32 +16,32 @@ export default function LoginForm({ client }) {
   };
 
   return (
-    <div className="reg-log">
+    <div className='reg-log'>
       <h2>Login</h2>
       <form onSubmit={login}>
-        <div className="form">
+        <div className='form'>
           <input
-            type="email"
+            type='email'
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <label className="label-name">
-            <span className="content-name">Email</span>
+          <label className='label-name'>
+            <span className='content-name'>Email</span>
           </label>
         </div>
 
-        <div className="form">
+        <div className='form'>
           <input
-            type="password"
+            type='password'
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <label className="label-name">
-            <span className="content-name">Password</span>
+          <label className='label-name'>
+            <span className='content-name'>Password</span>
           </label>
         </div>
 
-        <button className="reg-button" type="submit">
+        <button className='reg-button' type='submit'>
           Login User
         </button>
       </form>
