@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
+import React, { useRef } from 'react';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
 
-import { RESOLUTIONS_QUERY } from "./App";
+import { RESOLUTIONS_QUERY } from '../../App';
 
 const CREATE_GOAL = gql`
   mutation createGoal($name: String!, $resolutionId: String!) {
@@ -32,7 +32,7 @@ const CREATE_GOAL = gql`
 export default function GoalForm({ resolutionId }) {
   const [createGoal] = useMutation(
     CREATE_GOAL,
-    { refetchQueries: ["Resolutions"] }
+    { refetchQueries: ['Resolutions'] }
     //   {update: updateCache,}
   );
   let input;
@@ -40,7 +40,7 @@ export default function GoalForm({ resolutionId }) {
   return (
     <div>
       <input
-        type="text"
+        type='text'
         ref={(node) => {
           input = node;
         }}
@@ -53,10 +53,9 @@ export default function GoalForm({ resolutionId }) {
               resolutionId: resolutionId,
             },
           });
-          input.value = "";
+          input.value = '';
         }}
-        type="button"
-      >
+        type='button'>
         Submit
       </button>
     </div>

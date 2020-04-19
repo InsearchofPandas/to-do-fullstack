@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
+import React, { useRef } from 'react';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
 
-import { RESOLUTIONS_QUERY } from "./App";
+import { RESOLUTIONS_QUERY } from '../../App';
 
 const CREATE_RESOLUTION = gql`
   mutation createResolution($name: String!) {
@@ -41,30 +41,29 @@ export default function ResolutionForm() {
   return (
     <div>
       <h2>DEFINE YOUR FUTURE!</h2>
-      <div className="res-add">
+      <div className='res-add'>
         <form>
-          <div className="form" style={{ display: "flex" }}>
+          <div className='form' style={{ display: 'flex' }}>
             <input
-              className="res-input"
-              type="text"
+              className='res-input'
+              type='text'
               ref={(node) => {
                 input = node;
               }}
               required
             />
-            <label className="label-name">
-              <span className="content-name">Enter Resolution</span>
+            <label className='label-name'>
+              <span className='content-name'>Enter Resolution</span>
             </label>
           </div>
         </form>
         <button
-          className="add-btn"
+          className='add-btn'
           onClick={() => {
             createResolution({ variables: { name: input.value } });
-            input.value = "";
+            input.value = '';
           }}
-          type="button"
-        >
+          type='button'>
           +
         </button>
       </div>

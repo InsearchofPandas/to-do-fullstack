@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import ResolutionForm from './ResolutionForm';
-import RegisterForm from './RegisterForm';
-import LoginForm from './LoginForm';
-import GoalForm from './GoalForm';
-import Goal from './resolutions/Goal';
+import RegisterForm from './components/loginModule/RegisterForm';
+import LoginForm from './components/loginModule/LoginForm';
 import styles from './style.css';
 import Header from './components/Header';
-import ToggleSignIn from './components/login/ToggleSignIn';
+import ToggleSignIn from './components/loginModule/ToggleSignIn';
+import ResolutionModule from './components/resolutionModule/ResolutionModule';
 
 function App() {
   const [register, setRegister] = useState(true);
@@ -24,36 +22,18 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header client={client} />
       <div className='container'>
-        {data.user === null && (
+        {// Control Login vs  Resolution Display
+        data.user === null ? (
           <>
             <ToggleSignIn register={register} setRegister={setRegister} />
-            {register ? <RegisterForm client={client} /> : <LoginForm client={client} />}
+            {// Control Register vs Login
+            register ? <RegisterForm client={client} /> : <LoginForm client={client} />}
           </>
+        ) : (
+          <ResolutionModule data={data} />
         )}
-
-        <ResolutionForm />
-        <div className='resolutions-layout'>
-          <ul>
-            {data.resolutions.map((resolution) => (
-              <li key={resolution._id} className='single-res'>
-                <span
-                  style={{
-                    textDecoration: resolution.completed === true ? 'line-through' : '',
-                  }}>
-                  {resolution.name}
-                </span>
-                <ul>
-                  {resolution.goals.map((goal) => (
-                    <Goal goal={goal} key={goal._id} />
-                  ))}
-                </ul>
-                <GoalForm resolutionId={resolution._id} />
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </>
   );
