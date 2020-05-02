@@ -17,17 +17,26 @@ h2 {
   width: 100%;
 }
 
+h3 {
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+}
+
 p {
   text-align: center;
   color: rgb(218, 183, 152);
 }
 
+ul {
+  list-style: none;
+}
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
   or: #373b52;
   width: 100vw;
-  height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,16 +56,9 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: linear-gradient(
-    11deg,
-    rgba(41, 17, 99, 0.05) 0%,
-    rgba(153, 56, 180, 0.05) 41%,
-    rgba(252, 176, 69, 0.05) 100%
-  );
-
+  background: linear-gradient(11deg, rgba(41, 17, 99, 0.05) 0%, rgba(153, 56, 180, 0.05) 41%, rgba(252, 176, 69, 0.05) 100%);
   padding-right: 120px;
   border: 2px solid rgba(34, 33, 51, 0.4);
-
   position: relative;
 }
 
@@ -67,17 +69,31 @@ body {
 }
 
 .header-body {
+  width: 100vw;
   padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.user-icon {
+  height: 40px;
+  width: 28px;
+  padding-top: 8px;
+}
+
+.user-name {
+  color: #fff;
+  padding-left: 20px;
+}
+
 .instructions {
   width: 80%;
 }
 
-.log-btn {
+/* log in style */
+
+.logout-btn {
   color: white;
   font-size: 18px;
   width: 150px;
@@ -87,10 +103,10 @@ body {
   border: none;
 }
 
-.log-btn:hover {
+.logout-btn:hover {
   background: #36333d;
 }
-/* Form Styling  */
+/* Form Styling  */ /* Resolutions Form */
 
 form {
   width: 25vw;
@@ -104,9 +120,13 @@ form {
   width: 100%;
   position: relative;
   height: 50px;
-  margin-top: 15px;
+
   margin-bottom: 15px;
   overflow: hidden;
+}
+
+.goal-form {
+  height: 30px;
 }
 
 form input {
@@ -120,6 +140,13 @@ form input {
   padding-left: 20px;
   padding-bottom: 2px;
   outline: none;
+}
+
+.goal-input {
+  background-color: #353a4d00;
+  position: absolute;
+  bottom: 2px;
+  height: 42px;
 }
 
 .form label {
@@ -139,7 +166,6 @@ form input {
   bottom: -2px;
   height: 3px;
   width: 100%;
-
   background: linear-gradient(to right, #b294ff, #57e6e6, #ffb8ed, #57e6e6, #b294ff, #57e6e6);
   background-size: 500% auto;
   animation: gradient linear 3s infinite;
@@ -159,11 +185,15 @@ form input {
 
 .content-name {
   position: absolute;
-  bottom: 5px;
+  bottom: 1px;
   left: 20px;
   transition: all 0.3s ease;
   font-size: 22px;
   color: rgb(165, 177, 209);
+}
+
+.goal-content {
+  color: rgb(22, 25, 32);
 }
 
 .form input:focus + .label-name .content-name,
@@ -177,6 +207,47 @@ form input {
   transform: translateX(0%);
 }
 
+/* Resolutions Form */
+
+.res-add {
+  display: flex;
+}
+
+.add-btn {
+  width: 60px;
+  font-size: 48px;
+  font-weight: bold;
+  color: #171822;
+  color: rgb(193, 218, 255);
+  border: none;
+  outline: none;
+  background: none;
+  padding-bottom: 20px;
+}
+
+.goal-btn {
+}
+
+.del-btn {
+  height: 40px;
+  width: 40px;
+
+  border: none;
+  outline: none;
+  background: none;
+  padding-bottom: 20px;
+  stroke: #272633;
+}
+
+.del-btn:hover {
+  stroke: rgb(89, 78, 151);
+}
+
+.add-btn:hover {
+  color: rgb(157, 140, 255);
+}
+
+/* Registration  */
 .reg-log {
   margin-top: 60px;
 }
@@ -223,51 +294,60 @@ form input {
   outline: none;
 }
 
-/* Resolutions Form */
-
-.res-add {
+/* Resolutions layout */
+.res-input-container {
+  margin: 25px;
+  padding: 30px;
+  width: 40vw;
+  background-color: #98deff0e;
+  border-radius: 10px;
+  box-shadow: 20px 20px 34px 0px rgb(23, 20, 24);
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-
-.add-btn {
-  width: 60px;
-  font-size: 48px;
-  font-weight: bold;
-  color: #171822;
-  color: rgb(193, 218, 255);
-  border: none;
-  outline: none;
-  background: none;
-}
-
-.add-btn:hover {
-  transform: scale(1.05);
-  color: rgb(157, 140, 255);
-}
-
-/* Resolution layout */
 
 .resolutions-layout {
+  padding: 45px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 70vw;
   background-color: #35354d;
   border-radius: 10px;
 }
 
+.resolutions-container {
+  margin: 25px;
+  padding: 30px;
+  background-color: #d6ccbd17;
+  border-radius: 10px;
+  -webkit-box-shadow: 20px 20px 34px 0px rgba(104, 92, 107, 1);
+  -moz-box-shadow: 20px 20px 34px 0px rgba(104, 92, 107, 1);
+  box-shadow: 20px 20px 34px 0px rgb(23, 20, 24);
+}
+
 .single-res {
-  font-size: 48px;
-  color: red;
+  font-size: 32px;
+  color: rgb(236, 244, 255);
+  text-align: start;
 }
 
 .single-goal {
-  font-size: 48px;
-  color: blue;
+  font-size: 22px;
+  color: rgb(194, 165, 221);
+  text-align: start;
+  padding-top: 5px;
+  padding-left: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 /*  Responsive Section */
 @media (max-width: 1200px) {
   h1 {
     /* color: lightgreen; */
-    font-size: 144px;
+    font-size: 90px;
   }
 
   h2 {
@@ -295,17 +375,37 @@ form input {
     padding-top: 50px;
   }
 
+  .abs-center {
+    margin-top: 120px;
+  }
+
+  .header-bar {
+    height: 120px;
+    padding-right: 20px;
+  }
+
+  .user-icon {
+    height: 80px;
+    width: 56px;
+    padding-top: 8px;
+  }
+
+  .logout-btn {
+    font-size: 36px;
+    width: 300px;
+    height: 80px;
+    border-radius: 10px;
+  }
+
   .instructions {
-    width: 100%;
-    padding: 60px;
+    width: 90%;
+    padding-top: 120px;
   }
 
   .form {
     width: 100%;
     position: relative;
     height: 100px;
-    margin-top: 15px;
-    margin-bottom: 15px;
     overflow: hidden;
   }
 
@@ -364,4 +464,114 @@ form input {
     border: none;
     outline: none;
   }
+
+  .res-input-container {
+    width: 95vw;
+  }
+
+  .resolutions-layout {
+    width: 97vw;
+  }
+}
+/* Footer */
+
+.footerCenter {
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  background-color: #4a556817;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.footerText {
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.footerText:hover {
+  color: #56a5eb;
+}
+
+/* Customize the label (the container) */
+.container2 {
+  margin: 10px;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container2 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+  background-color: rgb(211, 194, 233);
+}
+
+/* On mouse-over, add a grey background color */
+.container2:hover input ~ .checkmark {
+  background-color: rgb(106, 93, 136);
+}
+
+/* When the checkbox is checked, add a blue background */
+.container2 input:checked ~ .checkmark {
+  background-color: #353535;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container2 input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container2 .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

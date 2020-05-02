@@ -23,7 +23,7 @@ const updateCache = (cache, { data }) => {
   const blanks = { completed: null, goals: [] };
   const fills = data.createResolution;
   const newTodo = { ...blanks, ...fills };
-  console.log(data);
+
   cache.writeQuery({
     query: RESOLUTIONS_QUERY,
     data: {
@@ -39,7 +39,7 @@ export default function ResolutionForm() {
   let input;
 
   return (
-    <div>
+    <>
       <h2>DEFINE YOUR FUTURE!</h2>
       <div className='res-add'>
         <form>
@@ -67,6 +67,6 @@ export default function ResolutionForm() {
           +
         </button>
       </div>
-    </div>
+    </>
   );
 }

@@ -38,14 +38,24 @@ export default function GoalForm({ resolutionId }) {
   let input;
 
   return (
-    <div>
-      <input
-        type='text'
-        ref={(node) => {
-          input = node;
-        }}
-      />
+    <div className='res-add'>
+      <form>
+        <div className='form goal-form'>
+          <input
+            className='res-input goal-input'
+            type='text'
+            ref={(node) => {
+              input = node;
+            }}
+            required
+          />
+          <label className='label-name'>
+            <span className='content-name goal-content'>add sub goals to your resolutions...</span>
+          </label>
+        </div>
+      </form>
       <button
+        className='add-btn goal-btn'
         onClick={() => {
           createGoal({
             variables: {
@@ -56,7 +66,7 @@ export default function GoalForm({ resolutionId }) {
           input.value = '';
         }}
         type='button'>
-        Submit
+        +
       </button>
     </div>
   );

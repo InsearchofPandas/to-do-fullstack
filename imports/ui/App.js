@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import RegisterForm from './components/loginModule/RegisterForm';
@@ -7,10 +7,12 @@ import styles from './style.css';
 import Header from './components/Header';
 import ToggleSignIn from './components/loginModule/ToggleSignIn';
 import ResolutionModule from './components/resolutionModule/ResolutionModule';
-
+import Footer from './components/Footer';
 function App() {
   const [register, setRegister] = useState(true);
   const { client, loading, error, data } = useQuery(RESOLUTIONS_QUERY);
+  const [user, setUser] = useState(null);
+
   if (loading) return <p>Loading…</p>;
   if (error)
     return (
@@ -21,21 +23,23 @@ function App() {
     );
 
   return (
-    <>
-      <Header client={client} />
+    <div>
+      <Header client={client} setUser={setUser} user={user} />
+
       <div className='container'>
         {// Control Login vs  Resolution Display
         data.user === null ? (
           <>
             <ToggleSignIn register={register} setRegister={setRegister} />
             {// Control Register vs Login
-            register ? <RegisterForm client={client} /> : <LoginForm client={client} />}
+            register ? <RegisterForm client={client} setUser={setUser} /> : <LoginForm client={client} setUser={setUser} />}
           </>
         ) : (
           <ResolutionModule data={data} />
         )}
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
