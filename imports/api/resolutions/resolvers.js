@@ -1,5 +1,5 @@
-import Resolutions from "./resolutions";
-import Goals from "../goals/goals";
+import Resolutions from './resolutions';
+import Goals from '../goals/goals';
 
 export default {
   Query: {
@@ -34,6 +34,11 @@ export default {
         userId: userId,
       });
       return Resolutions.findOne(resolutionsId);
+    },
+    deleteResolution(obj, args) {
+      const resolution = Resolutions.findOne(args._id);
+
+      Resolutions.remove(resolution);
     },
   },
 };

@@ -20,7 +20,6 @@ export default {
       return Goals.findOne(args._id);
     },
     deleteGoal(obj, args) {
-      console.log(args);
       const goal = Goals.findOne(args._id);
 
       Goals.remove(goal);

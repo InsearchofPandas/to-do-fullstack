@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Accounts } from 'meteor/accounts-base';
 
-export default function LoginForm({ client, setUser }) {
+export default function LoginForm({ client, setUser, setError }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,6 +13,7 @@ export default function LoginForm({ client, setUser }) {
         setUser(email);
         localStorage.setItem('user', email);
       }
+      setError(error.reason);
       console.log(error);
     });
   };
@@ -22,7 +23,7 @@ export default function LoginForm({ client, setUser }) {
       <h2>Login</h2>
       <form onSubmit={login}>
         <div className='form'>
-          <input type='email' onChange={(e) => setEmail(e.target.value)} required />
+          <input type='text' onChange={(e) => setEmail(e.target.value)} required />
           <label className='label-name'>
             <span className='content-name'>Email</span>
           </label>

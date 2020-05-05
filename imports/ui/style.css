@@ -15,6 +15,7 @@ h2 {
   font-size: 36px;
   color: rgb(193, 218, 255);
   width: 100%;
+  margin-bottom: 10px;
 }
 
 h3 {
@@ -42,6 +43,10 @@ body {
   align-items: center;
 }
 
+button:focus {
+  outline: 0;
+}
+
 .container {
   width: 100vw;
   display: flex;
@@ -62,6 +67,10 @@ body {
   position: relative;
 }
 
+.header-bar-visibility {
+  visibility: hidden;
+}
+
 .abs-center {
   padding-top: 10px;
   position: absolute;
@@ -76,6 +85,11 @@ body {
   align-items: center;
 }
 
+.user {
+  display: flex;
+  align-items: center;
+}
+
 .user-icon {
   height: 40px;
   width: 28px;
@@ -84,14 +98,14 @@ body {
 
 .user-name {
   color: #fff;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .instructions {
   width: 80%;
 }
 
-/* log in style */
+/* log out style */
 
 .logout-btn {
   color: white;
@@ -120,14 +134,13 @@ form {
   width: 100%;
   position: relative;
   height: 50px;
-
   margin-bottom: 15px;
   overflow: hidden;
 }
 
-.goal-form {
+/* .goal-form {
   height: 30px;
-}
+} */
 
 form input {
   width: 100%;
@@ -144,9 +157,8 @@ form input {
 
 .goal-input {
   background-color: #353a4d00;
-  position: absolute;
-  bottom: 2px;
-  height: 42px;
+
+  bottom: 8px;
 }
 
 .form label {
@@ -192,10 +204,6 @@ form input {
   color: rgb(165, 177, 209);
 }
 
-.goal-content {
-  color: rgb(22, 25, 32);
-}
-
 .form input:focus + .label-name .content-name,
 .form input:valid + .label-name .content-name {
   transform: translateY(-75%) scale(0.65);
@@ -207,10 +215,28 @@ form input {
   transform: translateX(0%);
 }
 
+/* Goal Mods to form input */
+
+.goal-content-name {
+  color: rgb(22, 25, 32);
+  position: absolute;
+  bottom: 1px;
+  left: 20px;
+  transition: all 0.3s ease;
+  font-size: 22px;
+}
+
+.form input:focus + .label-name .goal-content-name,
+.form input:valid + .label-name .goal-content-name {
+  opacity: 0%;
+  left: 5px;
+}
+
 /* Resolutions Form */
 
 .res-add {
   display: flex;
+  padding: 20px;
 }
 
 .add-btn {
@@ -222,20 +248,22 @@ form input {
   border: none;
   outline: none;
   background: none;
-  padding-bottom: 20px;
+  padding: 20px;
+  padding-bottom: 30px;
 }
 
-.goal-btn {
+.del-btn-icon {
+  height: 22px;
+  width: 22px;
+
+  stroke: #272633;
 }
 
 .del-btn {
-  height: 40px;
-  width: 40px;
-
   border: none;
   outline: none;
   background: none;
-  padding-bottom: 20px;
+
   stroke: #272633;
 }
 
@@ -294,6 +322,11 @@ form input {
   outline: none;
 }
 
+.error-message {
+  padding-top: 40px;
+  color: rgb(218, 152, 152);
+}
+
 /* Resolutions layout */
 .res-input-container {
   margin: 25px;
@@ -325,6 +358,29 @@ form input {
   -webkit-box-shadow: 20px 20px 34px 0px rgba(104, 92, 107, 1);
   -moz-box-shadow: 20px 20px 34px 0px rgba(104, 92, 107, 1);
   box-shadow: 20px 20px 34px 0px rgb(23, 20, 24);
+  display: flex;
+}
+
+.resolution {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  margin-bottom: 40px;
+}
+
+.res-del-btn {
+  width: 33px;
+  height: 33px;
+  border: none;
+  outline: none;
+  background: none;
+  padding-bottom: 10px;
+  stroke: rgb(236, 244, 255);
+}
+
+.res-del-btn:hover {
+  stroke: #bb6969;
 }
 
 .single-res {
@@ -334,13 +390,13 @@ form input {
 }
 
 .single-goal {
-  font-size: 22px;
   color: rgb(194, 165, 221);
-  text-align: start;
+  text-align: center;
   padding-top: 5px;
   padding-left: 30px;
   display: flex;
   justify-content: space-between;
+  height: 40px;
 }
 
 /*  Responsive Section */
@@ -355,6 +411,7 @@ form input {
     font-size: 72px;
     color: rgb(193, 218, 255);
     width: 100%;
+    padding: 20px;
   }
 
   p {
@@ -382,12 +439,20 @@ form input {
   .header-bar {
     height: 120px;
     padding-right: 20px;
+    justify-content: space-between;
   }
 
+  .user {
+    padding-left: 60px;
+  }
   .user-icon {
     height: 80px;
     width: 56px;
     padding-top: 8px;
+  }
+
+  .user-name {
+    font-size: 36px;
   }
 
   .logout-btn {
@@ -399,7 +464,8 @@ form input {
 
   .instructions {
     width: 90%;
-    padding-top: 120px;
+    padding-top: 140px;
+    padding-bottom: 50px;
   }
 
   .form {
@@ -407,6 +473,7 @@ form input {
     position: relative;
     height: 100px;
     overflow: hidden;
+    margin: 15px;
   }
 
   form input {
@@ -422,6 +489,10 @@ form input {
     outline: none;
   }
 
+  .label-name {
+    font-size: 44px;
+  }
+
   .content-name {
     position: absolute;
     bottom: 5px;
@@ -429,6 +500,13 @@ form input {
     transition: all 0.3s ease;
     font-size: 44px;
     color: rgb(165, 177, 209);
+  }
+
+  .goal-content-name {
+    font-size: 44px;
+  }
+  .add-btn {
+    font-size: 86px;
   }
 
   .login {
@@ -472,38 +550,25 @@ form input {
   .resolutions-layout {
     width: 97vw;
   }
-}
-/* Footer */
 
-.footerCenter {
-  margin-top: 200px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-  background-color: #4a556817;
-}
+  .del-btn {
+    width: 50px;
+    height: 50px;
+  }
 
-.footer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-}
+  .single-res {
+    font-size: 64px;
+  }
 
-.footerText {
-  color: white;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  font-size: 1.5rem;
-  text-decoration: none;
-}
+  .res-del-btn {
+    width: 70px;
+    height: 70px;
+    padding-bottom: 20px;
+  }
 
-.footerText:hover {
-  color: #56a5eb;
+  .single-goal {
+    height: 100px;
+  }
 }
 
 /* Customize the label (the container) */
@@ -574,4 +639,66 @@ form input {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+@media (max-width: 1200px) {
+  .container2 {
+    font-size: 48px;
+    padding-left: 90px;
+  }
+  .checkmark {
+    height: 66px;
+    width: 66px;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  .container2 .checkmark:after {
+    left: 24px;
+    top: 13px;
+    width: 13px;
+    height: 26.5px;
+    border: solid white;
+    border-width: 0 7px 7px 0;
+  }
+}
+
+/* Footer */
+
+.footerCenter {
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  background-color: #4a556817;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.footerText {
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.footerText:hover {
+  color: #56a5eb;
+}
+
+@media (max-width: 1200px) {
+  .footerText {
+    font-size: 2.33rem;
+    padding: 0.66rem;
+  }
 }

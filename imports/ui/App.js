@@ -12,6 +12,7 @@ function App() {
   const [register, setRegister] = useState(true);
   const { client, loading, error, data } = useQuery(RESOLUTIONS_QUERY);
   const [user, setUser] = useState(null);
+  const [errorDisplay, setError] = useState(null);
 
   if (loading) return <p>Loading…</p>;
   if (error)
@@ -31,8 +32,13 @@ function App() {
         data.user === null ? (
           <>
             <ToggleSignIn register={register} setRegister={setRegister} />
+            {errorDisplay && <p className='error-message'>{errorDisplay}</p>}
             {// Control Register vs Login
-            register ? <RegisterForm client={client} setUser={setUser} /> : <LoginForm client={client} setUser={setUser} />}
+            register ? (
+              <RegisterForm client={client} setUser={setUser} setError={setError} />
+            ) : (
+              <LoginForm client={client} setUser={setUser} setError={setError} />
+            )}
           </>
         ) : (
           <ResolutionModule data={data} />

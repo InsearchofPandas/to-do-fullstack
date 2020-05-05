@@ -50,12 +50,12 @@ export default function GoalForm({ resolutionId }) {
             required
           />
           <label className='label-name'>
-            <span className='content-name goal-content'>add sub goals to your resolutions...</span>
+            <span className='goal-content-name goal-content'>add sub goals to your resolutions...</span>
           </label>
         </div>
       </form>
       <button
-        className='add-btn goal-btn'
+        className='add-btn'
         onClick={() => {
           createGoal({
             variables: {

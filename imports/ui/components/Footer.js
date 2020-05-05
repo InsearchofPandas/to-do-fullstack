@@ -7,7 +7,7 @@ export default function Footer() {
         <a href='https://kylehumphrey.com' target='_blank' rel='noopener noreferrer' className='footerText'>
           Made by Kyle Humphrey
         </a>
-        <a href='https://github.com/InsearchofPandas/trivia-with-firebase' target='_blank' rel='noopener noreferrer' className='footerText'>
+        <a href='https://github.com/InsearchofPandas/to-do-fullstack' target='_blank' rel='noopener noreferrer' className='footerText'>
           View Code on GitHub
         </a>
       </footer>
