@@ -2,7 +2,20 @@ import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
-import { RESOLUTIONS_QUERY } from '../../App';
+const RESOLUTIONS_QUERY = gql`
+  query Resolutions {
+    resolutions {
+      _id
+      name
+      completed
+      goals {
+        _id
+        name
+        completed
+      }
+    }
+  }
+`;
 
 const CREATE_RESOLUTION = gql`
   mutation createResolution($name: String!) {
@@ -42,7 +55,6 @@ export default function ResolutionForm() {
   const handleEnter = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      console.log('do validate');
       createResolution({ variables: { name: resolution } });
       setResolution('');
     }
