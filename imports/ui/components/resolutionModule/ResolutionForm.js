@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
@@ -33,10 +33,20 @@ const updateCache = (cache, { data }) => {
 };
 
 export default function ResolutionForm() {
+  const [resolution, setResolution] = useState('');
   const [createResolution] = useMutation(CREATE_RESOLUTION, {
     update: updateCache,
   });
   let input;
+
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      console.log('do validate');
+      createResolution({ variables: { name: resolution } });
+      setResolution('');
+    }
+  };
 
   return (
     <>
@@ -47,10 +57,10 @@ export default function ResolutionForm() {
             <input
               className='res-input'
               type='text'
-              ref={(node) => {
-                input = node;
-              }}
+              onChange={(e) => setResolution(e.target.value)}
+              onKeyDown={handleEnter}
               required
+              value={resolution}
             />
             <label className='label-name'>
               <span className='content-name'>Enter Resolution</span>
@@ -60,8 +70,8 @@ export default function ResolutionForm() {
         <button
           className='add-btn'
           onClick={() => {
-            createResolution({ variables: { name: input.value } });
-            input.value = '';
+            createResolution({ variables: { name: resolution } });
+            setResolution('');
           }}
           type='button'>
           +

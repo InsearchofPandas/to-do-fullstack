@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
@@ -30,12 +30,26 @@ const CREATE_GOAL = gql`
 // };
 
 export default function GoalForm({ resolutionId }) {
+  const [goal, setGoal] = useState('');
   const [createGoal] = useMutation(
     CREATE_GOAL,
     { refetchQueries: ['Resolutions'] }
     //   {update: updateCache,}
   );
   let input;
+
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      createGoal({
+        variables: {
+          name: goal,
+          resolutionId: resolutionId,
+        },
+      });
+      setGoal('');
+    }
+  };
 
   return (
     <div className='res-add'>
@@ -44,9 +58,9 @@ export default function GoalForm({ resolutionId }) {
           <input
             className='res-input goal-input'
             type='text'
-            ref={(node) => {
-              input = node;
-            }}
+            onChange={(e) => setGoal(e.target.value)}
+            onKeyDown={handleEnter}
+            value={goal}
             required
           />
           <label className='label-name'>
@@ -59,11 +73,11 @@ export default function GoalForm({ resolutionId }) {
         onClick={() => {
           createGoal({
             variables: {
-              name: input.value,
+              name: goal,
               resolutionId: resolutionId,
             },
           });
-          input.value = '';
+          setGoal('');
         }}
         type='button'>
         +
